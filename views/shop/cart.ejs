@@ -1,0 +1,89 @@
+<% include ../partials/header.ejs %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 input-container">
+        <div>
+          <h1><%= title %></h1>
+          <% if (products) {
+             if (products.length > 0) { %>
+            <table class="table table-hover text-center">
+              <thead>
+                <tr>
+                  <th class="text-center">Item</th>
+                  <th class="text-center">Qty</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i = 0; i < products.length; i++){ %>
+                  <% include ../partials/cartItem.ejs %>
+
+                    <tr>
+
+                      <td class="text-left">
+                        <a href="#" data-toggle="modal" data-target="#cartItem<%= i %>" data-imagePath="<%= products[i].item.imagePath %>">
+                          <%= products[i].item.itemName %>
+                        </a>
+                      </td>
+                      <td>
+                        <%= products[i].qty %>
+                      </td>
+                      <td>
+                        $
+                        <%= products[i].item.itemPrice %>
+                      </td>
+                      <td>
+                        $
+                        <%= products[i].price %>
+                      </td>
+
+                    </tr>
+                    <% } %>
+                      <tr>
+                        <td colspan="3" class="text-right">
+
+                        </td>
+                        <td class="totalPrice">
+                          $
+                          <%= totalPrice %>
+                        </td>
+                      </tr>
+              </tbody>
+            </table>
+            <% if (!login) { %>
+
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <ul class="list-inline">
+                <li>
+                  <a href="/user/login" class="btn btn-primary">Log in</a>
+                </li>
+                <li>
+                  <a href="/user/signup">Don't have an account? Sign up!</a>
+                </li>
+              </ul>
+              <% } else { %>
+                <form action="/charge" method="POST">
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_2g8o38oBYxzwLDtJC6Xd9bm2" data-amount="<%= totalPrice * 100 %>" data-name="Demo Site" data-description="Widget" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                      data-locale="auto" data-zip-code="true">
+                    </script>
+                    <!-- hidden token to protect against phishing attacks -->
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </form>
+                <!-- <a href="/checkout" type="button" class="btn btn-success">Checkout</a> -->
+                <% } %>
+
+                  <% }
+          } %>
+                    <h2 <% if(products){ %>
+              class="hidden"
+              <% } %>
+              >Cart: Empty</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <% include ../partials/footer.ejs %>

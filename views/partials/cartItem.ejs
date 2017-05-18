@@ -1,0 +1,41 @@
+<!--
+TODO
+[ ] Make this pretty.
+[ ] Add math logic.
+
+ -->
+
+<!-- Log In Modal via bootstrap-->
+
+<div class="modal fade" id="cartItem<%= i %>" tabindex="-1" role="dialog" aria-labelledby="logInLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="logInLabel"><%= products[i].item.itemName %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <img width="50%" src="
+          <%= products[i].item.imagePath %>" alt="" />
+          <aside class="item-description">
+            <p>
+              <%= products[i].item.itemPrice %>
+            </p>
+            <p>
+              <%= products[i].item.itemDescription %>
+            </p>
+          </aside>
+          <form class="" action="/update-cart/<%= products[i].item._id %>" method="GET">
+            <div class="form-group" id="itemQty">
+              <label for="itemQty">Qty</label>
+              <input type="number" name="itemQty" value="<%= products[i].qty %>" class="form-control" id="itemQty">
+            </div>
+            <button type="submit" class="btn btn-success" id="submit">Update Cart</button>
+            <a href="/remove/<%= products[i].item._id %>" class="btn btn-danger" role="button">Remove item</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+body
+{
+    /*https://www.toptal.com/designers/subtlepatterns/page/2/*/
+    background-image: url('../images/seigaiha.png');
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 991px)
+{
+    /* For mobile phones: */
+    .grid-for-3
+    {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 991px)
+{
+    /* For mobile phones: */
+    .grid-for-2
+    {
+        display: none;
+    }
+}
+
+
+
+.thumbnail .description
+{
+    min-height: 200px;
+
+    color: #2b2b2b;
+}
+.jumbotron
+{
+    height: 300px;
+
+    color: white;
+    background-image: url('../images/spices.jpeg');
+    background-repeat: no-repeat;
+    background-position: 0 30%;
+    background-size: cover;
+    text-shadow: black .3em .3em .3em;
+}
+
+.jumbotron h1
+{
+    padding-top: 60px;
+
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px)
+{
+    /* For mobile phones: */
+    .jumbotron
+    {
+        display: none;
+    }
+}
+
+.price
+{
+    font-size: 18px;
+}
+
+.navbar
+{
+    margin-bottom: 0;
+}
+
+.input-container
+{
+    margin-top: 10%;
+    padding-bottom: 30px;
+
+    border: rgb(228, 228, 228) solid 1px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.above-table
+{
+    padding-bottom: 10px;
+}
+
+.totalPrice
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.date-header
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+aside .item-description
+{
+    float: right;
+}

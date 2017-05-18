@@ -1,0 +1,64 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>FAKE FOOD CO.</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+      <div class="alert alert-success text-center alert-dismissible<% if(noMessage){ %> hidden<% } %>" id="success">
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+        <%= successMsg %>
+      </div>
+    </div>
+  </div>
+
+  <!-- for large screen size  -->
+  <% for(let i = 0; i < productsFor3.length; i++) {%>
+    <div class="row">
+      <% for(let j = 0; j < productsFor3[i].length; j++) {%>
+        <div class="col-sm-6 col-md-4 grid-for-3" id="<%= productsFor3[i][j]._id %>">
+          <div class="thumbnail">
+            <img src="<%= productsFor3[i][j].imagePath %>">
+            <div class="caption">
+              <h3><%= productsFor3[i][j].itemName %></h3>
+              <p class="description">
+                <%= productsFor3[i][j].itemDescription %>
+              </p>
+              <p>
+                <a href="/add-to-cart/<%= productsFor3[i][j]._id %>" class="btn btn-success" role="button">Order</a>
+                <span class="pull-right price">
+                  <strong>$<%= productsFor3[i][j].itemPrice %></strong>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+
+      <!-- for med screen size  -->
+      <% for(let i = 0; i < productsFor2.length; i++) {%>
+        <div class="row">
+          <% for(let j = 0; j < productsFor2[i].length; j++) {%>
+            <div class="col-sm-6 col-md-4 grid-for-2" id="<%= productsFor2[i][j]._id %>">
+              <div class="thumbnail">
+                <img src="<%= productsFor2[i][j].imagePath %>">
+                <div class="caption">
+                  <h3><%= productsFor2[i][j].itemName %></h3>
+                  <p class="description">
+                    <%= productsFor2[i][j].itemDescription %>
+                  </p>
+                  <p>
+                    <a href="/add-to-cart/<%= productsFor2[i][j]._id %>" class="btn btn-success" role="button">Order</a>
+                    <span class="pull-right price">
+                    <strong>$<%= productsFor2[i][j].itemPrice %></strong>
+                  </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% } %>
+        </div>
+        <% } %>

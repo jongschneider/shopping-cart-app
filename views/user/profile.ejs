@@ -1,0 +1,63 @@
+<% include ../partials/header.ejs %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 input-container">
+        <div>
+          <h1 class="above-table"><%= title %></h1>
+
+
+          <% for(let i = orders.length-1; i >= 0; i--){ %>
+            <div class="panel panel-default">
+              <div class="panel-heading date-header">
+                <%= orders[i].date %>
+              </div>
+              <div class="panel-body">
+                <table class="table table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-center">Item</th>
+                      <th class="text-center">Qty</th>
+                      <th class="text-center">Price</th>
+                      <th class="text-center">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%  for(let j = 0; j < orders[i].items.length; j++) { %>
+
+                      <tr>
+                        <td class="text-left">
+                          <%= orders[i].items[j].item.itemName %>
+                        </td>
+                        <td>
+                          <%= orders[i].items[j].qty %>
+                        </td>
+                        <td>
+                          $
+                          <%= orders[i].items[j].item.itemPrice %>
+                        </td>
+                        <td>
+                          $
+                          <%= orders[i].items[j].price %>
+                        </td>
+                      </tr>
+                      <% } %>
+                        <tr>
+                          <td colspan="3" class="text-right">
+                          </td>
+                          <td class="totalPrice">
+                            $
+                            <%= orders[i].cart.totalPrice %>
+                          </td>
+                        </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% include ../partials/footer.ejs %>
