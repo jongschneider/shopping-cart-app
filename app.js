@@ -17,7 +17,7 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-const mongoDB = 'localhost:27017/cart';
+const mongoDB = process.env.MONGODB_URI || 'localhost:27017/cart';
 mongoose.connect(mongoDB);
 
 require('./config/passport');
